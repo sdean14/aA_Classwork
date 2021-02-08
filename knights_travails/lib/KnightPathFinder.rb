@@ -1,5 +1,5 @@
-require "00_tree_node.rb"
-
+require_relative "00_tree_node.rb"
+require "byebug"
 class KnightPathFinder
 
   attr_reader :root_node, :board, :considered_positions
@@ -74,18 +74,35 @@ class KnightPathFinder
   end
 
   def build_move_tree
-    queue = [self] # [7, 1] [7, 6] [0, 1] [0, 6]
-    queue.each do |node|
-      node.new_move_positions(node.value).each do |pos|
-        next if new_move_positions(node.value).empty?
+    queue = [self.root_node] # [7, 1] [7, 6] [0, 1] [0, 6]
+    
+    queue.each do |node|      
+      new_move_positions(node.value).each do |pos|
+        #next if new_move_positions(node.value).empty?
         node.add_child(PolyTreeNode.new(pos))
         queue += node.children
       end
-    end
+    end    
+  end
+  
+#Part2
+
+  def  find_path(end_pos)
+    self.root_node.dfs(end_pos)  
   end
 
+
 end
-
-
-
+ p r1 = KnightPathFinder.new([7, 1])
+ p r1.build_move_tree
+ p '----------------------'
+ p r2 = KnightPathFinder.new([5, 2])
+ #p r2.build_move_tree
+ p r2.root_node.children[0].value 
+ p '-------------'
+ p r1.root_node.children
+ p '-----------------------'
+ p r1.find_path([5, 2]).value
+ #p r1.find_path([7, 3]).value
+ 
 

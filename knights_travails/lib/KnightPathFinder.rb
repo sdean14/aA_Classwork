@@ -69,4 +69,12 @@ class KnightPathFinder
     return new_positions   
   end
 
+  def build_move_tree(target)
+    queue = [self]
+
+    # queue.each ||
+    #queue + new_move_positions(self)
+
+  end
+
 end

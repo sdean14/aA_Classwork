@@ -4,62 +4,57 @@ class KnightPathFinder
 
   # end
 
-    0 1 2 3 4 5 6 7 j
-  0
-  1
-  2
-  3
-  4
-  5
-  6
-  7
+  #   0 1 2 3 4 5 6 7 j
+  # 0
+  # 1
+  # 2
+  # 3
+  # 4
+  # 5
+  # 6
+  # 7
   
-  i
+  # i
 
   def self.valid_moves(pos)
     i = pos[0]
     j = pos[1]
-    # pos = [i, j]
-    # pos = [x, y]
     valid = []
-    case 
-    when i + 2 >= 0 && i + 2 < 8
+    if i + 2 >= 0 && i + 2 < 8
       if j + 1 < 8 
-        vaid << [i + 2, j + 1]
+        valid << [i + 2, j + 1]
       end  
       if j - 1 >= 0  
-        vaid << [i + 2, j - 1]
-      end     
-    when i - 2 >= 0 && i - 2 < 8
+        valid << [i + 2, j - 1]
+      end  
+    end   
+    if i - 2 >= 0 && i - 2 < 8
       if j + 1 < 8 
-        vaid << [i - 2, j + 1]
+        valid << [i - 2, j + 1]
       end  
       if j - 1 >= 0  
-        vaid << [i - 2, j - 1]
-      end    
-    when i - 1 >= 0 && i - 1 < 8
+        valid << [i - 2, j - 1]
+      end  
+    end  
+    if i - 1 >= 0 && i - 1 < 8
       if j + 2 < 8 
-        vaid << [i - 1, j + 2]
+        valid << [i - 1, j + 2]
       end  
       if j - 2 >= 0  
-        vaid << [i - 1, j - 2]
-      end    
-    when i + 1 >= 0 && i + 1 < 8
+        valid << [i - 1, j - 2]
+      end 
+    end   
+    if i + 1 >= 0 && i + 1 < 8
       if j + 2 < 8 
-        vaid << [i + 1, j + 2]
+        valid << [i + 1, j + 2]
       end  
       if j - 2 >= 0  
-        vaid << [i + 1, j - 2]
+        valid << [i + 1, j - 2]
       end  
-       
-    else
-      
     end
-
-    i + 2 && j + 1 || j - 1
-    # i - 2, i - 2, i + 2, i + 2, i - 1, i + 1
-    # j - 1, j + 1, j + 1, j + 1, j - 2, j + 2
+    valid
   end
+
 
   def initialize(pos)
     @root_node = PolyTreeNode.new(pos)

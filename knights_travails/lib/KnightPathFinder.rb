@@ -1,4 +1,8 @@
+require "00_tree_node.rb"
+
 class KnightPathFinder
+
+  attr_reader :root_node, :board, :considered_positions
 
   # def self.build_move_tree
 
@@ -69,12 +73,19 @@ class KnightPathFinder
     return new_positions   
   end
 
-  def build_move_tree(target)
-    queue = [self]
-
-    # queue.each ||
-    #queue + new_move_positions(self)
-
+  def build_move_tree
+    queue = [self] # [7, 1] [7, 6] [0, 1] [0, 6]
+    queue.each do |node|
+      node.new_move_positions(node.value).each do |pos|
+        next if new_move_positions(node.value).empty?
+        node.add_child(PolyTreeNode.new(pos))
+        queue += node.children
+      end
+    end
   end
 
 end
+
+
+
+

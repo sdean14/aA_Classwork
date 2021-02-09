@@ -2,7 +2,7 @@ require_relative "00_tree_node.rb"
 require "byebug"
 class KnightPathFinder
 
-  attr_reader :root_node, :board, :considered_positions
+  attr_reader :root_node, :board, :considered_positions, :move_tree
 
   # def self.build_move_tree
 
@@ -62,8 +62,10 @@ class KnightPathFinder
 
   def initialize(pos)
     @root_node = PolyTreeNode.new(pos)
-    @board = Array.new(8) { Array.new(8) }
+    #@board = Array.new(8) { Array.new(8) }
     @considered_positions = [pos]
+    @move_tree = build_move_tree
+  end
 
   def build_move_tree
     queue = [self.root_node] # [7, 1] [7, 6] [0, 1] [0, 6]
@@ -74,9 +76,7 @@ class KnightPathFinder
         node.add_child(PolyTreeNode.new(pos))
         queue += node.children
       end
-    end    
-  
-  end
+    end 
   end
 
   def new_move_positions(pos)
@@ -84,27 +84,39 @@ class KnightPathFinder
     @considered_positions += new_positions
     return new_positions   
   end
+ 
 
 
   
 #Part2
 
   def  find_path(end_pos)
-    self.root_node.dfs(end_pos)  
+    self.root_node.dfs(end_pos) #.trace_path_back.map {|ele| ele.value}  
+  end
+
+  def trace_path_back
+    return [self] if self.parent.nil?
+    last = self.parent
+    self.trace_path_back.unshift(last.trace_path_back)
   end
 
 
 end
- p r1 = KnightPathFinder.new([7, 1])
- p r1.build_move_tree
- p '----------------------'
- p r2 = KnightPathFinder.new([5, 2])
- #p r2.build_move_tree
- p r2.root_node.children[0].value 
- p '-------------'
- p r1.root_node.children
- p '-----------------------'
- p r1.find_path([5, 2]).value
- #p r1.find_path([7, 3]).value
+p kpf = KnightPathFinder.new([0, 0])
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
+p kpf.move_tree
+
+#  p r1 = KnightPathFinder.new([7, 1])
+#  #p r1.build_move_tree
+#  p '----------------------'
+#  p r2 = KnightPathFinder.new([5, 2])
+#  #p r2.build_move_tree
+#  p r2.root_node.children[0].value 
+#  p '-------------'
+#  p r1.root_node.children
+#  p '-----------------------'
+#  p r1.find_path([5, 2]).value
+#  #p r1.find_path([7, 3]).value
  
 

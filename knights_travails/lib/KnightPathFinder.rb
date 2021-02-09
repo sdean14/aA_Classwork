@@ -65,14 +65,6 @@ class KnightPathFinder
     @board = Array.new(8) { Array.new(8) }
     @considered_positions = [pos]
 
-  end
-
-  def new_move_positions(pos)
-    new_positions = KnightPathFinder.valid_moves(pos).select{|position| !@considered_positions.include?(position)}
-    @considered_positions += new_positions
-    return new_positions   
-  end
-
   def build_move_tree
     queue = [self.root_node] # [7, 1] [7, 6] [0, 1] [0, 6]
     
@@ -83,7 +75,17 @@ class KnightPathFinder
         queue += node.children
       end
     end    
+  
   end
+  end
+
+  def new_move_positions(pos)
+    new_positions = KnightPathFinder.valid_moves(pos).select{|position| !@considered_positions.include?(position)}
+    @considered_positions += new_positions
+    return new_positions   
+  end
+
+
   
 #Part2
 

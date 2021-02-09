@@ -1,8 +1,8 @@
-require "00_tree_node.rb"
-
+require_relative "00_tree_node.rb"
+require "byebug"
 class KnightPathFinder
 
-  attr_reader :root_node, :board, :considered_positions
+  attr_reader :root_node, :considered_positions
 
   # def self.build_move_tree
 
@@ -62,9 +62,21 @@ class KnightPathFinder
 
   def initialize(pos)
     @root_node = PolyTreeNode.new(pos)
-    @board = Array.new(8) { Array.new(8) }
     @considered_positions = [pos]
+    build_move_tree
+  end
 
+  def build_move_tree
+    queue = [self.root_node] # [7, 1] [7, 6] [0, 1] [0, 6]
+    
+    until queue.empty?  
+      current_node = queue.shift   
+      new_move_positions(current_node.value).each do |pos|
+        new_child = PolyTreeNode.new(pos)
+        current_node.add_child(new_child)
+        queue << new_child
+      end
+    end 
   end
 
   def new_move_positions(pos)
@@ -72,20 +84,31 @@ class KnightPathFinder
     @considered_positions += new_positions
     return new_positions   
   end
+ 
+  
+#Part2
 
-  def build_move_tree
-    queue = [self] # [7, 1] [7, 6] [0, 1] [0, 6]
-    queue.each do |node|
-      node.new_move_positions(node.value).each do |pos|
-        next if new_move_positions(node.value).empty?
-        node.add_child(PolyTreeNode.new(pos))
-        queue += node.children
-      end
+  def find_path(end_pos)
+    last = root_node.bfs(end_pos)
+    trace_path_back(last).map {|ele| ele.value}.reverse 
+  end
+
+  def trace_path_back(node)
+    nodes = []
+    current_node = node
+    until current_node.nil?
+      nodes << current_node
+      current_node = current_node.parent
     end
+    nodes
   end
 
 end
 
+p kpf = KnightPathFinder.new([0, 0])
+p kpf.find_path([1, 2])
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
 
-
+ 
 

@@ -85,7 +85,23 @@ class KnightPathFinder
     return new_positions   
   end
  
+  
+#Part2
 
+  def find_path(end_pos)
+    last = root_node.bfs(end_pos)
+    trace_path_back(last).map {|ele| ele.value}.reverse 
+  end
+
+  def trace_path_back(node)
+    nodes = []
+    current_node = node
+    until current_node.nil?
+      nodes << current_node
+      current_node = current_node.parent
+    end
+    nodes
+  end
 
   
 #Part2

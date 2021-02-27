@@ -1,5 +1,6 @@
-<h1>New Cat Form</h1>
-<form action="<%=cats_url%>"method="POST">
+<h1>Edit Cat Form</h1>
+<form action="<%=cat_url(@kitty)%>"method="POST">
+    <input type = 'hiddem' name ='_method' value ='PATCH'>
     
     <label>Birth Day:
          <input type='date' name='cat[birth_day]' value='<%=@kitty.birth_date%>'> 
@@ -28,7 +29,7 @@
     </label>
 
 
-    <input type='submit' value='Create Cat'>
+    <input type='submit' value='Edit Cat'>
 </form>  
 
         

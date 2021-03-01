@@ -5,7 +5,7 @@
      <% @kitties.each do |cat|  %>
         <li> 
             <ul>
-               <li><%= cat.name %></li>
+               <li><a href="<%=cat_url(@kitty)%>"  <%= cat.name%></a></li>
                <li><%= cat.birth_date%></li>
                <li><%= cat.color %></li>
                <li><%= cat.sex %></li>

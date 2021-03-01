@@ -16,24 +16,25 @@ class CatsController < ApplicationController
     end
 
     def update
-     @kitty=Cat.find(params[:id]
+     @kitty=Cat.find(params[:id])
+
      if @kitty.update(cat_params)
         redirect_to cat_url(@kitty)
-        
      else
         render :edit         
      end
+
     end
 
 
     def create
         @kitty=Cat.new(cat_params)
+
         if @kitty.save
-            redirect_to cat_url(@kitty.id)
+            redirect_to cat_url(@kitty)
         else
             render :new
         end
-       
     end
 
     

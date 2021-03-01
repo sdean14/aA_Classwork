@@ -66,3 +66,77 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for ::1 at 2021-02-26 15:53:48 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mike/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as */*
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4298ms (Views: 4189.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for ::1 at 2021-02-26 15:54:11 -0800
+Processing by CatsController#index as */*
+  Rendering cats/index.html.erb within layouts/application
+  Rendered cats/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 1723ms (Views: 1722.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for ::1 at 2021-02-26 17:29:29 -0800
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mike/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+
+SyntaxError - syntax error, unexpected keyword_if, expecting ')'
+     if @kitty.update(cat_params)
+     ^~:
+  app/controllers/cats_controller.rb:21:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 17:32:54 -0800
+
+SyntaxError - syntax error, unexpected keyword_if, expecting ')'
+     if @kitty.update(cat_params)
+     ^~:
+  app/controllers/cats_controller.rb:21:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 17:34:03 -0800
+
+SyntaxError - syntax error, unexpected keyword_if, expecting ')'
+     if @kitty.update(cat_params)
+     ^~:
+  app/controllers/cats_controller.rb:21:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 17:41:30 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mike/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+
+SyntaxError - syntax error, unexpected keyword_if, expecting ')'
+     if @kitty.update(cat_params)
+     ^~:
+  app/controllers/cats_controller.rb:21:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 18:17:43 -0800
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/mike/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+
+SyntaxError - syntax error, unexpected keyword_end, expecting ')'
+    end
+    ^~~
+/mnt/c/users/noahs/desktop/aA_Classwork/cats_project/cats_99/app/controllers/cats_controller.rb:52: syntax error, unexpected end-of-input, expecting keyword_end:
+  app/controllers/cats_controller.rb:27:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 18:18:25 -0800
+
+SyntaxError - syntax error, unexpected keyword_if, expecting ')'
+     if @kitty.update(cat_params)
+     ^~:
+  app/controllers/cats_controller.rb:21:in `'
+
+Started GET "/cats" for ::1 at 2021-02-26 18:18:59 -0800
+Processing by CatsController#index as */*
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:5
+  Rendered cats/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 1828ms (Views: 1723.0ms | ActiveRecord: 3.1ms)
+
+

@@ -14,6 +14,8 @@ Array.prototype.uniq = function() {
   return res
 }
 
+//--------------------------------------------------------------------------
+
 let arr = [1, 2, 2, 3, 3, 3];
 console.log(arr.uniq())
 
@@ -32,3 +34,48 @@ Array.prototype.twoSum = function() {
 } 
  let arr2 = [4, -4, 10];
  console.log(arr2.twoSum());
+
+//--------------------------------------------------------------------------
+
+Array.prototype.transpose = function() {
+    let res = [];
+
+    let i = 0;
+
+    let height = this.length;
+
+    let width = this[0].length;
+
+    while(i < width) {
+        let j = 0;
+        let smallArr = [];
+
+        while(j < height) {
+           smallArr.push(this[j][i])
+           j++;
+        }
+
+        res.push(smallArr);
+        i++
+    }
+
+    return res
+} 
+
+let twoDarr = [
+    [2,1,4],
+    [2,1,4]
+  ] 
+
+console.log(twoDarr.transpose())
+
+// [  
+  //  [2,1,4]
+  //  [2,1,4]
+//  ] 
+
+ //    [2,2]
+  //   [1,1]
+  //   [4,4]
+     
+  //  ] 

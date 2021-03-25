@@ -12,7 +12,8 @@ export default class Board extends React.Component{
             return <div key={`${idx}`}>
                 {row.map((tile, idx2) => { 
                 return ( <Tile key={idx2} /> )
-                })}
+                })} 
+                {/* {this.props.updateGame()} */}
             </div>
         }) 
 

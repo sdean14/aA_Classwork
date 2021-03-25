@@ -1,0 +1,8 @@
+.tile{
+    border: 2px solid rgb(60, 174, 209);
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: cadetblue;
+    color: rgb(179, 102, 1);
+}

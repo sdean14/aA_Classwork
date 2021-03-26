@@ -1,0 +1,8 @@
+
+<% if action == 'show' %>
+  <a href="<%= cats_url %>">Cat Index Link</a>
+<% else %>
+    <a href="<%= cats_url(@cat) %>">Cat Show Page</a>
+<% end  %>
+
+ 

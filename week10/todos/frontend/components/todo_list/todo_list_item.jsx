@@ -1,11 +1,7 @@
 import React from 'react'
 
 
-export const TodoListItem = (props) => {
-    return (
-        <ul>
-            <li>{props.todo.title}</li>
-        </ul>
-    )
+export const TodoListItem = ({todos}) => {
+    return todos.map((todo) => <li key={todo.id}> {todo.title} </li>);
 }
 

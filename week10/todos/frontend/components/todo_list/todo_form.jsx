@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class TodoForm extends React.Component {
     constructor(props){
         super(props)
@@ -13,6 +14,7 @@ class TodoForm extends React.Component {
         this.updateTitle = this.updateTitle.bind(this)
         this.updateBody = this.updateBody.bind(this)
         this.updateDone = this.updateDone.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     updateTitle(e){
@@ -37,6 +39,7 @@ class TodoForm extends React.Component {
             body: "",
             done: false  
         })
+        console.log(this.state)
     }
 
     render(){
@@ -50,13 +53,13 @@ class TodoForm extends React.Component {
                 <label>Body:
                     <textarea value={this.state.body} onChange={this.updateBody}/>
                 </label>
-                <label>Complete?
+                <label>Completed?
                     <div onChange={this.updateDone}>
                         <input type="radio" value="true" name="done" /> True
                         <input type="radio" value="false" name="done" /> False
                     </div>
                 </label>
-                <input type="submit" value="Add Todo!"/>
+                <input type="submit" value="Add Todo"/>
             </form>
         )
     }

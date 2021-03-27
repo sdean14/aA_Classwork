@@ -22,15 +22,17 @@ const todosReducer = (state = initialState, action) => {
 
     switch (action.type) {
       case RECEIVE_TODOS:
-        action.todos.forEach( todo => {
-          nextState[todo.id] = todo;
-        });
-        return nextState;
+        let newList = {};
+        for (let i = 0; i < action.todos.length; i++) {
+          newList[action.todos[i].id] = action.todos[i]; 
+        }
+        return newList;
       case RECEIVE_TODO:
-        const newTodo = {[action.todo.id]: action.todo};
-        return Object.assign({}, state, newTodo);
+        nextState[action.todo.id] = action.todo; 
+        return nextState;
       case REMOVE_TODO:
-        return {}
+        delete nextState[action.todo.id]; 
+        return nextState
       default:
         return state;
     }
